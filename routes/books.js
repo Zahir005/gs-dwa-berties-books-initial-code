@@ -11,6 +11,10 @@ router.get('/search-result', function (req, res, next) {
     res.send("You searched for: " + req.query.keyword)
 });
 
+router.get('/addbook',function(req, res, next){
+    res.render("addbook.ejs")
+});
+
 router.get('/list', function(req, res, next) {
     let sqlquery = "SELECT * FROM books"; // query database to get all the books
     // execute sql query
@@ -18,9 +22,11 @@ router.get('/list', function(req, res, next) {
         if (err) {
             next(err)
         }
-        res.send(result)
+        res.render("list.ejs", {availableBooks:result})
      });
 });
+
+
 
 // Export the router object so index.js can access it
 module.exports = router
