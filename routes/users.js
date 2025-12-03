@@ -91,7 +91,7 @@ router.post('/registered',
         // TASK 10 — STORE IN DATABASE
         // ============================
         // Insert into the "users" table
-        let sqlquery = "INSERT INTO users (username, firstname, lastname, email, password_hash) VALUES (?,?,?,?,?)";
+        let sqlquery = "INSERT INTO users (username, first_name, last_name, email, password_hash) VALUES (?,?,?,?,?)";
         let newrecord = [username, first, last, email, hashedPassword];
 
         db.query(sqlquery, newrecord, (err, result) => {
@@ -209,7 +209,7 @@ router.get('/audit', function(req, res, next) {
 router.get("/list",redirectLogin, function (req, res, next) {
 
     // only select non-sensitive fields
-    const sqlquery = "SELECT username, firstname, lastname, email FROM users";
+    const sqlquery = "SELECT username, first_name, last_name, email FROM users";
 
     db.query(sqlquery, (err, result) => {
         if (err) {
