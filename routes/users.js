@@ -181,7 +181,7 @@ router.post("/loggedin",
                         // Successful login
                         req.session.userId = username;
                         logAudit(username, true, req);
-                        res.send("Hello " + user.first + ", you have successfully logged in!");
+                        res.send("Hello " + username + ", you have successfully logged in!");
                     } else {
                         // Wrong password
                         res.send("Login failed: incorrect username or password.");
